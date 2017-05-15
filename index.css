@@ -1,0 +1,229 @@
+body
+{
+    font-family: 'Montserrat', sans-serif !important;
+}
+.pac-container
+{
+    z-index:10000;
+}
+.demo-card-wide.mdl-card 
+{ 
+    margin-bottom: 20px; 
+}
+.container-fluid 
+{ 
+    padding-left: 0; 
+    padding-right: 0; 
+}
+.navbar 
+{ 
+    border-radius: 0;
+}
+.navbar-toggle 
+{
+    position: relative;
+    float: none;
+    padding: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+}
+.btn-floating.halfway-fab 
+{ 
+    top: 25px; 
+}
+.customSearch
+{
+    max-width: 400px;
+    width: 100%;
+    float: right;
+    margin-right: 10px !important;
+    padding-right: 50px;
+}
+.customSearch > input[type=search]:focus 
+{
+    margin-top: 10px;
+    height: 45px;
+    background-color: #1976d2;
+    padding-right: 50px;
+    color:#ffffff;
+}
+#container .col .card 
+{ 
+    min-height: 450px !important; 
+}
+.card > .card-content 
+{ 
+    min-height: 150px; 
+}
+.had-container 
+{ 
+    margin-top: 5px; 
+}
+.card-image img 
+{ 
+    width: 100%; 
+    height: 250px; 
+}
+ul > li img 
+{
+    width: 100%; 
+}
+#ajaxLoading 
+{ 
+    position: absolute; 
+    top: 50%; 
+    width: 20%; 
+    left: 40%; 
+}
+hr 
+{ 
+    border: none; 
+    height: 1px; 
+    background: #aeaeae; 
+}
+.card > .card-reveal > .card-title > a 
+{ 
+    margin-top: -3px; 
+}
+.card > .card-reveal > .card-title 
+{ 
+    margin-bottom: 40px; 
+    width: calc(100% - 65px); 
+}
+.card-reveal 
+{ 
+    text-align: justify; 
+}
+.card > .card-action > .chip 
+{ 
+    position: relative; 
+    top: 1px; 
+}
+.customChip 
+{ 
+    height: 20px; 
+    line-height: 20px; 
+    margin-bottom: 0;
+}
+.customSearch > input[type=search]:focus + label + i 
+{ 
+    color: #ffffff !important; 
+}
+.claseMapa 
+{ 
+    width:100%; 
+    height: calc(100%) !important; 
+} 
+.card-reveal > ul > li 
+{ 
+    padding-bottom: 30px !important; 
+}
+.card-reveal > ul > li > span 
+{ 
+    font-size: 11px; 
+}
+.panelMapa 
+{ 
+    z-index: 10; 
+    background: #000000; 
+    width: 100%; 
+    height: 1000px; 
+    margin-top: -5px; 
+    opacity: 1; 
+    display: none; 
+    padding-top: 5px; 
+    position: fixed;
+}
+.panelMapa > .col > .card-panel 
+{ 
+    position: fixed; 
+    width: calc(100% - 20px); 
+    height: calc(92% - 30px); 
+    z-index: 10;
+}
+.GoogleMaps 
+{ 
+    cursor:pointer; 
+}
+.panelMapa > .col > .card-panel 
+{ 
+    padding: 2px; 
+}
+.panelMapa .fixed-action-btn 
+{ 
+    right: 0; 
+    bottom: 0; 
+    top: 75px; 
+    left: 100%; 
+    height: 100px; 
+}
+.panelMapa .fixed-action-btn.horizontal ul 
+{ 
+    margin-top: 16px; 
+    margin-right: 16px; 
+}
+.panelMapa > .col > .card-panel > .fixed-action-btn > a.btn-floating 
+{ 
+    margin-right: 20px; 
+}
+.panelMapa > .col > .card-panel > .fixed-action-btn > ul 
+{ 
+    margin-right: 35px; 
+    margin-top: 17px; 
+}
+#modalCalcularRuta 
+{ 
+    min-height: 300px; 
+    max-width: 30%; 
+    padding: 10px;
+}
+#slide-out > li > .userView > .background 
+{
+    background: #000000;
+}
+#slide-out > li > .userView > .background > img 
+{
+    opacity: 0.5;
+}
+@media all and (max-width:992px)
+{
+    #modalCalcularRuta 
+    { 
+        min-height: 300px; 
+        max-width: 60%; 
+        padding: 10px;
+    }
+}
+@media all and (max-width:600px)
+{
+    #modalCalcularRuta 
+    { 
+        min-height: 300px; 
+        max-width: 100%; 
+        padding: 10px;
+    }
+    nav 
+    { 
+        height: 64px; 
+    }
+    .had-container 
+    { 
+        margin-top: 15px; 
+    }
+    nav i 
+    { 
+        height: 64px !important; 
+        line-height: 64px !important; 
+    }
+    .customSearch 
+    { 
+        width: calc(90% - 35px);
+        margin-right: 0px !important;
+        padding-right: 0px !important;
+    }
+}

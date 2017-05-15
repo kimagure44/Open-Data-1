@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>LT</title>
+        <meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+        <style>
+            .claseMapa
+            {
+                width: 400px;
+                height: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="claseMapa" id="mapaUbicacion"></div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG8CBChj4WLWo7x1saF-vB240-Z93jcA4"></script>
+        <script>
+            var OPENDATA = OPENDATA || {};
+            OPENDATA.metodos =
+            {
+                initMap: function(mapa) 
+                {
+                    debugger;
+                    var idMapa = document.getElementById("mapaUbicacion");
+                    var ubicacion = {lat: 40.451359, lng: -3.489992};
+                    var map = new google.maps.Map(idMapa, 
+                    {
+                        zoom: 17,
+                        center: ubicacion,
+                        mapTypeId: 'satellite'
+                    });
+                    var marker = new google.maps.Marker(
+                    {
+                        position: ubicacion,
+                        map: map
+                    });
+                }
+            }
+            $(document).ready(function()
+            {   
+                OPENDATA.metodos.initMap();
+            })
+        </script>
+    </body>
+</html>
