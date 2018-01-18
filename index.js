@@ -1,17 +1,12 @@
 var OPENDATA = OPENDATA || {};
 var estructura;
-OPENDATA.variables =
-{
-    url:
-    {
+OPENDATA.variables = {
+    url: {
         notPicture: "https://image.freepik.com/foto-gratis/madera-blanca-de-textura-de-fondo_1232-1731.jpg"
     },
-    msn:
-    {
-        es:
-        {
-            error: 
-            {
+    msn: {
+        es: {
+            error: {
                 noDisponible: "Información no disponible",
                 errorTypeMime: "Formato de media no reconocido"
             },
@@ -42,10 +37,8 @@ OPENDATA.variables =
             destino: "Direccion destino",
             calcularRuta: "Calcular ruta"
         },
-        en:
-        {
-            error: 
-            {
+        en: {
+            error: {
                 noDisponible: "Information not available",
                 errorTypeMime: "Unrecognized media format"
             },
@@ -76,10 +69,8 @@ OPENDATA.variables =
             destino: "Destination address",
             calcularRuta: "Calculate route"
         },
-        fr:
-        {
-            error: 
-            {
+        fr: {
+            error: {
                 noDisponible: "Information non disponible",
                 errorTypeMime: "format de média non reconn"
             },
@@ -110,10 +101,8 @@ OPENDATA.variables =
             destino: "Adresse de destination",
             calcularRuta: "routage"
         },
-        it:
-        {
-            error: 
-            {
+        it: {
+            error: {
                 noDisponible: "Información no disponible",
                 errorTypeMime: "Formato de media no reconocido"
             },
@@ -144,10 +133,8 @@ OPENDATA.variables =
             destino: "Direccion destino",
             calcularRuta: "Calcular ruta"
         },
-        de:
-        {
-            error: 
-            {
+        de: {
+            error: {
                 noDisponible: "Información no disponible",
                 errorTypeMime: "Formato de media no reconocido"
             },
@@ -178,10 +165,8 @@ OPENDATA.variables =
             destino: "Direccion destino",
             calcularRuta: "Calcular ruta"
         },
-        pt:
-        {
-            error: 
-            {
+        pt: {
+            error: {
                 noDisponible: "Información no disponible",
                 errorTypeMime: "Formato de media no reconocido"
             },
@@ -210,12 +195,10 @@ OPENDATA.variables =
             seleccionTransporte: "Selecciona un transporte",
             origen: "Dirección origen",
             destino: "Direccion destino",
-            calcularRuta: "Calcular ruta"    
+            calcularRuta: "Calcular ruta"
         },
-        ru:
-        {
-            error: 
-            {
+        ru: {
+            error: {
                 noDisponible: "Información no disponible",
                 errorTypeMime: "Formato de media no reconocido"
             },
@@ -244,7 +227,7 @@ OPENDATA.variables =
             seleccionTransporte: "Selecciona un transporte",
             origen: "Dirección origen",
             destino: "Direccion destino",
-            calcularRuta: "Calcular ruta"    
+            calcularRuta: "Calcular ruta"
         }
     },
     idioma: "",
@@ -254,26 +237,19 @@ OPENDATA.variables =
     travelMode: null,
     destino: null
 }
-OPENDATA.metodos =
-{
-    searchCard: function()
-    {
-        $(".inputSearch").on("keyup", function()
-        {
+OPENDATA.metodos = {
+    searchCard: function() {
+        $(".inputSearch").on("keyup", function() {
             var buscar = $(this).val();
-            if (buscar.length > 0 || buscar!="")
-            {
+            if (buscar.length > 0 || buscar != "") {
                 $("div.col").hide();
-                $("div.col[data-name*='" + buscar + "' i]").show();        
-            }
-            else
-            {
+                $("div.col[data-name*='" + buscar + "' i]").show();
+            } else {
                 $("div.col").show();
             }
         });
     },
-    setPanelGoogleMaps: function()
-    {
+    setPanelGoogleMaps: function() {
         OPENDATA.variables.html += '<div class="row panelMapa">';
         OPENDATA.variables.html += '<div class="col s12">';
         OPENDATA.variables.html += '<div class="card-panel teal">';
@@ -289,8 +265,7 @@ OPENDATA.metodos =
         OPENDATA.variables.html += '</div>';
         OPENDATA.variables.html += '</div>';
     },
-    setPanelCalcularRuta: function()
-    {
+    setPanelCalcularRuta: function() {
         OPENDATA.variables.html += '<div id="modalCalcularRuta" class="modal">';
         OPENDATA.variables.html += '<div class="modal-content">';
         OPENDATA.variables.html += '<h4>' + OPENDATA.variables.msn.es.calcularRuta + '</h4>';
@@ -316,8 +291,7 @@ OPENDATA.metodos =
         OPENDATA.variables.html += '</div>';
         OPENDATA.variables.html += '</div>';
     },
-    panelCalcularRuta: function()
-    {
+    panelCalcularRuta: function() {
         var html = '<div id="modalCalcularRuta" class="modal">';
         html += '<div class="modal-content">';
         html += '<h4>' + OPENDATA.variables.msn.es.calcularRuta + '</h4>';
@@ -344,27 +318,22 @@ OPENDATA.metodos =
         html += '</div>';
         return html;
     },
-    createCard: function(destino)
-    {
+    createCard: function(destino) {
         OPENDATA.metodos.setPanelGoogleMaps();
         OPENDATA.metodos.setPanelCalcularRuta();
-        $(OPENDATA.variables.arrayEstructura).each(function()
-        {
+        $(OPENDATA.variables.arrayEstructura).each(function() {
             OPENDATA.variables.html += '<div class="col s12 m6 l4" data-name="' + this.basicData.name + '" data-id="' + this.serviceAttributtes.id + '" data-actualizacion="' + this.serviceAttributtes.fechaActualizacion + '"  data-latitude="' + this.geoData.latitude + '" data-longitude="' + this.geoData.longitude + '" data-direccion="' + this.geoData.address + '" data-idtipo="' + this.extraData.idTipo + '" data-tipo="' + this.extraData.Tipo + ' data-serviciopago="' + this.extraData.serviciosDePago + '" data-horario="' + this.extraData.horario + '" data-idsubcategoria="' + this.extraData.idSubcategoria + '" data-subcategoria="' + this.extraData.subcategoria + '" data-name="' + this.basicData.name + '" data-title="' + this.basicData.title + '">';
             OPENDATA.variables.html += '<div class="card z-depth-3">';
             OPENDATA.variables.html += '<div class="card-image">';
-            if (this.multimedia.length > 0) { OPENDATA.variables.html += '<img src="' + this.multimedia[0].url + '">'; }
-            else { OPENDATA.variables.html += '<img src="' + OPENDATA.variables.url.notPicture + '">'; }
+            if (this.multimedia.length > 0) { OPENDATA.variables.html += '<img src="' + this.multimedia[0].url + '">'; } else { OPENDATA.variables.html += '<img src="' + OPENDATA.variables.url.notPicture + '">'; }
             OPENDATA.variables.html += '</div>';
             OPENDATA.variables.html += '<div class="card-content">';
             OPENDATA.variables.html += '<a class="btn-floating halfway-fab waves-effect waves-light blue activator"><i class="material-icons">more_vert</i></a>';
             OPENDATA.variables.html += '<span class="card-title activator grey-text text-darken-4">' + this.basicData.name + '</span>';
             var estrellas = parseInt(this.extraData.subcategoria);
-            if (!isNaN(estrellas))
-            {
-                for (cont=0;cont<estrellas;cont++)
-                {
-                    OPENDATA.variables.html += '<i class="Small material-icons amber-text lighten-1">grade</i>';        
+            if (!isNaN(estrellas)) {
+                for (cont = 0; cont < estrellas; cont++) {
+                    OPENDATA.variables.html += '<i class="Small material-icons amber-text lighten-1">grade</i>';
                 }
             }
             OPENDATA.variables.html += '</div>';
@@ -391,11 +360,10 @@ OPENDATA.metodos =
             OPENDATA.variables.html += "<b>" + OPENDATA.variables.msn[OPENDATA.variables.idioma].fotos + "</b>";
             OPENDATA.variables.html += '<hr>';
 
-            $(this.multimedia).each(function()
-            {
+            $(this.multimedia).each(function() {
                 OPENDATA.variables.html += '<ul>';
                 OPENDATA.variables.html += '<li>';
-                OPENDATA.variables.html += '<img src="' + this.url  + '"  class="materialboxed">';
+                OPENDATA.variables.html += '<img src="' + this.url + '"  class="materialboxed">';
                 OPENDATA.variables.html += '<span><b>' + OPENDATA.variables.msn[OPENDATA.variables.idioma].descripcion + ':</b> ' + this.descripcion + "</span>";
                 OPENDATA.variables.html += "</li>";
                 OPENDATA.variables.html += '</ul>';
@@ -406,113 +374,85 @@ OPENDATA.metodos =
             OPENDATA.variables.html += '<a href="' + this.basicData.web + '">' + OPENDATA.variables.msn[OPENDATA.variables.idioma].web + '</a>';
             OPENDATA.variables.html += '<span class="chip blue white-text right customChip">' + this.basicData.regActual + " de " + this.basicData.regTotal + '</span>';
             OPENDATA.variables.html += '</div>';
-            OPENDATA.variables.html += '</div>';  
-            OPENDATA.variables.html += '</div>';  
+            OPENDATA.variables.html += '</div>';
+            OPENDATA.variables.html += '</div>';
         })
 
         document.getElementById("container").innerHTML = OPENDATA.variables.html;
         $('.materialboxed').materialbox();
-        $(".btn-floating.closeMap").on("click", function()
-        {
-            $(".panelMapa").hide(300);    
+        $(".btn-floating.closeMap").on("click", function() {
+            $(".panelMapa").hide(300);
         })
-        $(".GoogleMaps").on("click", function() 
-        { 
+        $(".GoogleMaps").on("click", function() {
             var obj = $(this).parent().parent().parent();
-            $(".panelMapa").show(300, function()
-            {
-                OPENDATA.metodos.initMap(obj);    
+            $(".panelMapa").show(300, function() {
+                OPENDATA.metodos.initMap(obj);
             });
 
         });
-        $("#origenRuta").attr("placeholder","");
-        $(".calcularRuta").on("click", function()
-        {
-            $('#modalCalcularRuta').modal(
-            {
+        $("#origenRuta").attr("placeholder", "");
+        $(".calcularRuta").on("click", function() {
+            $('#modalCalcularRuta').modal({
                 dismissible: true, // Modal can be dismissed by clicking outside of the modal
                 opacity: .5, // Opacity of modal background
                 inDuration: 300, // Transition in duration
                 outDuration: 200, // Transition out duration
                 startingTop: '4%', // Starting top style attribute
                 endingTop: '10%', // Ending top style attribute
-                ready: function(modal, trigger) 
-                { 
+                ready: function(modal, trigger) {
                     console.log(modal, trigger);
                 },
-                complete: function() 
-                { 
-                }
+                complete: function() {}
             });
             $('#modalCalcularRuta').modal('open');
-            $("#btnActionCalcularRuta").on("click", function()
-            {
-                if ($("#travelMode").val() > 0 && $("#travelMode").val() !=null && $("#origenRuta").val().length>0)
-                {
-                    OPENDATA.metodos._calcularRuta(OPENDATA.variables.map); 
+            $("#btnActionCalcularRuta").on("click", function() {
+                if ($("#travelMode").val() > 0 && $("#travelMode").val() != null && $("#origenRuta").val().length > 0) {
+                    OPENDATA.metodos._calcularRuta(OPENDATA.variables.map);
                     $('#modalCalcularRuta').modal('close');
-                }
-                else
-                {
-                    if ($("#travelMode").val() == 0 || $("#travelMode").val() == null)
-                    {
+                } else {
+                    if ($("#travelMode").val() == 0 || $("#travelMode").val() == null) {
                         $("#modalCalcularRuta > .modal-footer > div:nth-child(1)").addClass("red-text")
-                    }
-                    else
-                    {
+                    } else {
                         $("#modalCalcularRuta > .modal-footer > div:nth-child(1)").removeClass("red-text")
                     }
-                    if ($("#origenRuta").val().length == 0)
-                    {
+                    if ($("#origenRuta").val().length == 0) {
                         $("#modalCalcularRuta > .modal-footer > div:nth-child(2) > label").addClass("red-text")
-                    }
-                    else
-                    {
+                    } else {
                         $("#modalCalcularRuta > .modal-footer > div:nth-child(2) > label").removeClass("red-text")
                     }
                 }
             });
             $('select').material_select();
-            $("#travelMode").on("change", function()
-            {
-                if ($(this).val()>0)
-                {
+            $("#travelMode").on("change", function() {
+                if ($(this).val() > 0) {
                     if ($(this).val() == 1) { OPENDATA.variables.travelMode = "WALKING"; }
                     if ($(this).val() == 2) { OPENDATA.variables.travelMode = "BICYCLING"; }
-                    if ($(this).val() == 3) { OPENDATA.variables.travelMode = "DRIVING"; }        
+                    if ($(this).val() == 3) { OPENDATA.variables.travelMode = "DRIVING"; }
                 }
             })
             OPENDATA.metodos.initAutocomplete();
         });
     },
-    initAutocomplete: function() 
-    {
+    initAutocomplete: function() {
         var input = document.getElementById('origenRuta');
         var searchBox = new google.maps.places.SearchBox(input);
-        searchBox.addListener('places_changed', function() 
-        {
+        searchBox.addListener('places_changed', function() {
             var places = searchBox.getPlaces();
-            if (places.length == 0) 
-            {
+            if (places.length == 0) {
                 return;
             }
 
             var bounds = new google.maps.LatLngBounds();
-            places.forEach(function(place) 
-            {
-                if (!place.geometry) 
-                {
+            places.forEach(function(place) {
+                if (!place.geometry) {
                     console.log("Returned place contains no geometry");
                     return;
                 }
-                
-                
-                if (place.geometry.viewport) 
-                {
+
+
+                if (place.geometry.viewport) {
                     bounds.union(place.geometry.viewport);
-                } 
-                else 
-                {
+                } else {
                     bounds.extend(place.geometry.location);
                 }
             });
@@ -520,163 +460,117 @@ OPENDATA.metodos =
         });
     },
 
-    setAttributes: function(obj)
-    {
+    setAttributes: function(obj) {
         var attributes = obj["@attributes"];
 
-        if (typeof attributes.fechaActualizacion !== undefined) { estructura.serviceAttributtes.fechaActualizacion = attributes.fechaActualizacion; }
-        else { estructura.serviceAttributtes.fechaActualizacion = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof attributes.fechaActualizacion !== undefined) { estructura.serviceAttributtes.fechaActualizacion = attributes.fechaActualizacion; } else { estructura.serviceAttributtes.fechaActualizacion = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof attributes.id !== undefined) { estructura.serviceAttributtes.id = attributes.id; }
-        else { estructura.serviceAttributtes.id = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof attributes.id !== undefined) { estructura.serviceAttributtes.id = attributes.id; } else { estructura.serviceAttributtes.id = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
     },
-    setBasicData: function(obj, index, total)
-    {
+    setBasicData: function(obj, index, total) {
         var basicData = obj["basicData"];
 
-        if (typeof basicData.body !== undefined) { estructura.basicData.body = basicData.body; }
-        else { estructura.basicData.body =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof basicData.body !== undefined) { estructura.basicData.body = basicData.body; } else { estructura.basicData.body = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof basicData.email !== undefined) { estructura.basicData.email = basicData.email; }
-        else { estructura.basicData.email = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof basicData.email !== undefined) { estructura.basicData.email = basicData.email; } else { estructura.basicData.email = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof basicData.fax !== undefined && typeof basicData.fax!== "object") { estructura.basicData.fax = basicData.fax; }
-        else { estructura.basicData.fax = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof basicData.fax !== undefined && typeof basicData.fax !== "object") { estructura.basicData.fax = basicData.fax; } else { estructura.basicData.fax = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof basicData.language !== undefined) { estructura.basicData.language = OPENDATA.variables.msn[OPENDATA.variables.idioma].idioma; }
-        else { estructura.basicData.language = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof basicData.language !== undefined) { estructura.basicData.language = OPENDATA.variables.msn[OPENDATA.variables.idioma].idioma; } else { estructura.basicData.language = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof basicData.name !== undefined) { estructura.basicData.name = basicData.name; }
-        else { estructura.basicData.name =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof basicData.name !== undefined) { estructura.basicData.name = basicData.name; } else { estructura.basicData.name = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof basicData.phone !== undefined) { estructura.basicData.phone = basicData.phone; }
-        else { estructura.basicData.phone =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof basicData.phone !== undefined) { estructura.basicData.phone = basicData.phone; } else { estructura.basicData.phone = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof basicData.title !== undefined) { estructura.basicData.title = basicData.title; }
-        else { estructura.basicData.title =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof basicData.title !== undefined) { estructura.basicData.title = basicData.title; } else { estructura.basicData.title = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof basicData.web !== undefined) { estructura.basicData.web = basicData.web; }
-        else { estructura.basicData.web =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof basicData.web !== undefined) { estructura.basicData.web = basicData.web; } else { estructura.basicData.web = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
         estructura.basicData.regActual = index;
         estructura.basicData.regTotal = total;
     },
-    setExtraData: function(obj)
-    {
+    setExtraData: function(obj) {
         var extraData = obj["extradata"];
 
-        if (typeof extraData.item[0] !== undefined) { estructura.extraData.idTipo = extraData.item[0]; }
-        else { estructura.extraData.idTipo =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof extraData.item[0] !== undefined) { estructura.extraData.idTipo = extraData.item[0]; } else { estructura.extraData.idTipo = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof extraData.item[1] !== undefined) { estructura.extraData.Tipo = extraData.item[1]; }
-        else { estructura.extraData.Tipo =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof extraData.item[1] !== undefined) { estructura.extraData.Tipo = extraData.item[1]; } else { estructura.extraData.Tipo = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof extraData.item[2]["@attributes"].name !== undefined) { estructura.extraData.serviciosDePago = extraData.item[2]["@attributes"].name; }
-        else { estructura.extraData.serviciosDePago =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof extraData.item[2]["@attributes"].name !== undefined) { estructura.extraData.serviciosDePago = extraData.item[2]["@attributes"].name; } else { estructura.extraData.serviciosDePago = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof extraData.item[3]["@attributes"].name !== undefined) { estructura.extraData.horario = extraData.item[3]["@attributes"].name; }
-        else { estructura.extraData.horario =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof extraData.item[3]["@attributes"].name !== undefined) { estructura.extraData.horario = extraData.item[3]["@attributes"].name; } else { estructura.extraData.horario = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof extraData.fechas !== undefined) { estructura.extraData.fechas = extraData.fechas; }
-        else { estructura.extraData.fechas =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof extraData.fechas !== undefined) { estructura.extraData.fechas = extraData.fechas; } else { estructura.extraData.fechas = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof extraData.categorias.categoria.item[0] !== undefined) { estructura.extraData.idCategoria = extraData.categorias.categoria.item[0]; }
-        else { estructura.extraData.idCategoria =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (Object.keys(extraData.categorias).length && typeof extraData.categorias.categoria.item[0] !== undefined) { estructura.extraData.idCategoria = extraData.categorias.categoria.item[0]; } else { estructura.extraData.idCategoria = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof extraData.categorias.categoria.item[1] !== undefined) { estructura.extraData.Categoria = extraData.categorias.categoria.item[1]; }
-        else { estructura.extraData.Categoria =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (Object.keys(extraData.categorias).length && typeof extraData.categorias.categoria.item[1] !== undefined) { estructura.extraData.Categoria = extraData.categorias.categoria.item[1]; } else { estructura.extraData.Categoria = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (extraData.categorias.categoria.subcategorias !== undefined)
-        {
-            if (typeof extraData.categorias.categoria.subcategorias.subcategoria.item[0] !== undefined) { estructura.extraData.idSubcategoria = extraData.categorias.categoria.subcategorias.subcategoria.item[0]; }
-            else { estructura.extraData.idSubcategoria =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (Object.keys(extraData.categorias).length && extraData.categorias.categoria.subcategorias !== undefined) {
+            if (typeof extraData.categorias.categoria.subcategorias.subcategoria.item[0] !== undefined) { estructura.extraData.idSubcategoria = extraData.categorias.categoria.subcategorias.subcategoria.item[0]; } else { estructura.extraData.idSubcategoria = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-            if (typeof extraData.categorias.categoria.subcategorias.subcategoria.item[1] !== undefined) { estructura.extraData.subcategoria = extraData.categorias.categoria.subcategorias.subcategoria.item[1]; }
-            else { estructura.extraData.subcategoria =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
-        }
-        else
-        {
-            estructura.extraData.idSubcategoria =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible;
-            estructura.extraData.subcategoria =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible;
+            if (typeof extraData.categorias.categoria.subcategorias.subcategoria.item[1] !== undefined) { estructura.extraData.subcategoria = extraData.categorias.categoria.subcategorias.subcategoria.item[1]; } else { estructura.extraData.subcategoria = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        } else {
+            estructura.extraData.idSubcategoria = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible;
+            estructura.extraData.subcategoria = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible;
         }
     },
-    setGeoData: function(obj)
-    {
+    setGeoData: function(obj) {
         var geoData = obj["geoData"];
 
-        if (typeof geoData.address !== undefined) { estructura.geoData.address = geoData.address; }
-        else { estructura.geoData.address =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof geoData.address !== undefined) { estructura.geoData.address = geoData.address; } else { estructura.geoData.address = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof geoData.zipcode !== undefined) { estructura.geoData.zipcode = geoData.zipcode; }
-        else { estructura.geoData.zipcode =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof geoData.zipcode !== undefined) { estructura.geoData.zipcode = geoData.zipcode; } else { estructura.geoData.zipcode = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof geoData.locality !== undefined && geoData.locality.length !== undefined) { estructura.geoData.locality = geoData.locality; }
-        else { estructura.geoData.locality =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof geoData.locality !== undefined && geoData.locality.length !== undefined) { estructura.geoData.locality = geoData.locality; } else { estructura.geoData.locality = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof geoData.country !== undefined) { estructura.geoData.country = geoData.country; }
-        else { estructura.geoData.country =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof geoData.country !== undefined) { estructura.geoData.country = geoData.country; } else { estructura.geoData.country = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof geoData.latitude !== undefined) { estructura.geoData.latitude = geoData.latitude; }
-        else { estructura.geoData.latitude =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof geoData.latitude !== undefined) { estructura.geoData.latitude = geoData.latitude; } else { estructura.geoData.latitude = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof geoData.longitude !== undefined) { estructura.geoData.longitude = geoData.longitude; }
-        else { estructura.geoData.longitude =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof geoData.longitude !== undefined) { estructura.geoData.longitude = geoData.longitude; } else { estructura.geoData.longitude = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-        if (typeof geoData.subAdministrativeArea !== undefined) { estructura.geoData.subAdministrativeArea = geoData.subAdministrativeArea; }
-        else { estructura.geoData.subAdministrativeArea =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+        if (typeof geoData.subAdministrativeArea !== undefined) { estructura.geoData.subAdministrativeArea = geoData.subAdministrativeArea; } else { estructura.geoData.subAdministrativeArea = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
     },
-    setMultimedia: function(obj)
-    {
+    setMultimedia: function(obj) {
         var multimedia = obj["multimedia"];
-        $(multimedia).each(function(i, v)
-        {
+        $(multimedia).each(function(i, v) {
             var media = v.media;
-            if (media !== undefined)
-            {
-                if (media.length === undefined)
-                {
+            if (media !== undefined) {
+                if (media.length === undefined) {
                     var objMediaTemp = new Object();
 
-                    if (media.descripcion !== undefined) { objMediaTemp.descripcion = media.descripcion; }
-                    else { objMediaTemp.descripcion =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+                    if (media.descripcion !== undefined) { objMediaTemp.descripcion = media.descripcion; } else { objMediaTemp.descripcion = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-                    if (media.url !== undefined) { objMediaTemp.url = media.url; }
-                    else { objMediaTemp.url = OPENDATA.variables.url.notPicture; }
+                    if (media.url !== undefined) { objMediaTemp.url = media.url; } else { objMediaTemp.url = OPENDATA.variables.url.notPicture; }
 
                     estructura.multimedia.push(objMediaTemp);
-                }
-                else
-                {
-                    for (datos in media)
-                    {
-                        var datosMedia = media[datos];  
+                } else {
+                    for (datos in media) {
+                        var datosMedia = media[datos];
                         var objMediaTemp = new Object();
 
                         /*if (datosMedia["@attributes"].type !== undefined) { objMediaTemp.type = datosMedia["@attributes"].type; }
                         else { objMediaTemp.type = OPENDATA.variables.msn.error.errorTypeMime; }*/
 
-                        if (datosMedia.descripcion !== undefined) { objMediaTemp.descripcion = datosMedia.descripcion; }
-                        else { objMediaTemp.descripcion =  OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
+                        if (datosMedia.descripcion !== undefined) { objMediaTemp.descripcion = datosMedia.descripcion; } else { objMediaTemp.descripcion = OPENDATA.variables.msn[OPENDATA.variables.idioma].error.noDisponible; }
 
-                        if (datosMedia.url !== undefined) { objMediaTemp.url = datosMedia.url; }
-                        else { objMediaTemp.url = OPENDATA.variables.url.notPicture; }
+                        if (datosMedia.url !== undefined) { objMediaTemp.url = datosMedia.url; } else { objMediaTemp.url = OPENDATA.variables.url.notPicture; }
 
                         estructura.multimedia.push(objMediaTemp);
-                    }    
-                }  
+                    }
+                }
             }
 
         });
     },
-    createArrayData: function(data)
-    {
+    createArrayData: function(data) {
         var _regTotal = data.length;
-        $(data).each(function(i, v)
-        {
+        $(data).each(function(i, v) {
             estructura = new Object();
             OPENDATA.metodos.setEstructura();
             OPENDATA.metodos.setAttributes(this);
-            OPENDATA.metodos.setBasicData(this, (i+1), _regTotal);
+            OPENDATA.metodos.setBasicData(this, (i + 1), _regTotal);
             OPENDATA.metodos.setGeoData(this);
             OPENDATA.metodos.setMultimedia(this);
             OPENDATA.metodos.setExtraData(this);
@@ -684,17 +578,16 @@ OPENDATA.metodos =
         });
         OPENDATA.metodos.createCard("container");
     },
-    setEstructura: function()
-    {
+    setEstructura: function() {
         estructura.serviceAttributtes = new Object();
         estructura.serviceAttributtes.fechaActualizacion = "";
         estructura.serviceAttributtes.id = "";
         estructura.basicData = new Object();
-        estructura.basicData.language =  "";
+        estructura.basicData.language = "";
         estructura.basicData.name = "";
         estructura.basicData.email = "";
         estructura.basicData.phone = "";
-        estructura.basicData.fax =  "";
+        estructura.basicData.fax = "";
         estructura.basicData.title = "";
         estructura.basicData.body = "";
         estructura.basicData.web = "";
@@ -722,45 +615,36 @@ OPENDATA.metodos =
 
         //extradata: {}
     },
-    viewData: function(data)
-    {
+    viewData: function(data) {
         var service = data.service;
         OPENDATA.metodos.initData();
         OPENDATA.metodos.createArrayData(service);
     },
-    initData: function()
-    {
+    initData: function() {
         OPENDATA.variables.html.container = "";
         OPENDATA.variables.arrayEstructura = [];
     },
-    showAjaxLoading: function(estado)
-    {
-        if (estado) { $("#container").html("<div class='progress' id='ajaxLoading'><div class='indeterminate'></div></div>"); }
-        else { $("#ajaxLoading").remove(); }
+    showAjaxLoading: function(estado) {
+        if (estado) { $("#container").html("<div class='progress' id='ajaxLoading'><div class='indeterminate'></div></div>"); } else { $("#ajaxLoading").remove(); }
     },
-    initMap: function(mapa) 
-    {
+    initMap: function(mapa) {
         var idMapa = document.getElementById("mapaUbicacion");
         var contentString = '<div id="contentInfoMarker"></div>';
-        var infowindow = new google.maps.InfoWindow(
-        {
+        var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
-        var ubicacion = {lat: parseFloat($(mapa).attr("data-latitude")), lng: parseFloat($(mapa).attr("data-longitude"))};
-        OPENDATA.variables.map = new google.maps.Map(idMapa, 
-        {
+        var ubicacion = { lat: parseFloat($(mapa).attr("data-latitude")), lng: parseFloat($(mapa).attr("data-longitude")) };
+        OPENDATA.variables.map = new google.maps.Map(idMapa, {
             zoom: 17,
             center: ubicacion,
             mapTypeId: 'satellite'
         });
-        var marker = new google.maps.Marker(
-        {
+        var marker = new google.maps.Marker({
             position: ubicacion,
             map: OPENDATA.variables.map,
             title: ""
         });
-        marker.addListener('click', function() 
-        {
+        marker.addListener('click', function() {
             infowindow.open(OPENDATA.variables.map, marker);
         });
         var geocoder = new google.maps.Geocoder;
@@ -770,85 +654,65 @@ OPENDATA.metodos =
         OPENDATA.metodos._geocodeLatLng(geocoder, OPENDATA.variables.map, infowindow, lat, lng);
 
     },
-    _calcularRuta: function(map)
-    {
+    _calcularRuta: function(map) {
         var markerArray = [];
         var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
+        var directionsDisplay = new google.maps.DirectionsRenderer({ map: map });
         var stepDisplay = new google.maps.InfoWindow;
 
         OPENDATA.metodos._calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map);
 
-        var onChangeHandler = function() 
-        {
+        var onChangeHandler = function() {
             OPENDATA.metodos._calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map);
         };
         document.getElementById('origenRuta').addEventListener('change', onChangeHandler);
         document.getElementById('destinoRuta').addEventListener('change', onChangeHandler);
     },
-    _calculateAndDisplayRoute: function(directionsDisplay, directionsService, markerArray, stepDisplay, map) 
-    {
-        for (var i = 0; i < markerArray.length; i++) 
-        {
+    _calculateAndDisplayRoute: function(directionsDisplay, directionsService, markerArray, stepDisplay, map) {
+        for (var i = 0; i < markerArray.length; i++) {
             markerArray[i].setMap(null);
         }
-        directionsService.route(
-        {
-            origin: document.getElementById('origenRuta').value,
-            destination: document.getElementById("destinoRuta").value,
-            travelMode: OPENDATA.variables.travelMode
-        }, 
-        function(response, status) 
-        {
-            if (status === 'OK') 
-            {
-                document.getElementById('modalCalcularRuta').innerHTML = '<b>' + response.routes[0].warnings + '</b>';
-                directionsDisplay.setDirections(response);
-                OPENDATA.metodos._showSteps(response, markerArray, stepDisplay, map);
-            } 
-            else 
-            {
-                window.alert('Directions request failed due to ' + status);
-            }
-        });
+        directionsService.route({
+                origin: document.getElementById('origenRuta').value,
+                destination: document.getElementById("destinoRuta").value,
+                travelMode: OPENDATA.variables.travelMode
+            },
+            function(response, status) {
+                if (status === 'OK') {
+                    document.getElementById('modalCalcularRuta').innerHTML = '<b>' + response.routes[0].warnings + '</b>';
+                    directionsDisplay.setDirections(response);
+                    OPENDATA.metodos._showSteps(response, markerArray, stepDisplay, map);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
     },
-    _showSteps: function(directionResult, markerArray, stepDisplay, map) 
-    {
-        debugger;
+    _showSteps: function(directionResult, markerArray, stepDisplay, map) {
         var myRoute = directionResult.routes[0].legs[0];
-        for (var i = 0; i < myRoute.steps.length; i++) 274
-        {
+        for (var i = 0; i < myRoute.steps.length; i++) {
             var marker = markerArray[i] = markerArray[i] || new google.maps.Marker;
             marker.setMap(map);
             marker.setPosition(myRoute.steps[i].start_location);
-            OPENDATA.metodos._attachInstructionText( stepDisplay, marker, myRoute.steps[i].instructions, map);
+            OPENDATA.metodos._attachInstructionText(stepDisplay, marker, myRoute.steps[i].instructions, map);
         }
-        debugger;
         $("#modalCalcularRuta").remove();
         $("#container").append(OPENDATA.metodos.panelCalcularRuta());
-        $("#origenRuta").attr("placeholder","");
+        $("#origenRuta").attr("placeholder", "");
     },
-    _attachInstructionText(stepDisplay, marker, text, map) 
-    {
-        google.maps.event.addListener(marker, 'click', function() 
-        {
+    _attachInstructionText(stepDisplay, marker, text, map) {
+        google.maps.event.addListener(marker, 'click', function() {
             stepDisplay.setContent(text);
             stepDisplay.open(map, marker);
         });
     },
-    _geocodeLatLng: function(geocoder, map, infowindow, lat, lng) 
-    {
+    _geocodeLatLng: function(geocoder, map, infowindow, lat, lng) {
 
-        var latlng = {lat: lat, lng: lng};
-        geocoder.geocode({'location': latlng}, function(results, status) 
-        {
-            if (status === 'OK') 
-            {
-                if (results[1]) 
-                {
+        var latlng = { lat: lat, lng: lng };
+        geocoder.geocode({ 'location': latlng }, function(results, status) {
+            if (status === 'OK') {
+                if (results[1]) {
                     map.setZoom(16);
-                    var marker = new google.maps.Marker(
-                    {
+                    var marker = new google.maps.Marker({
                         position: latlng,
                         map: map
                     });
@@ -856,67 +720,50 @@ OPENDATA.metodos =
                     OPENDATA.variables.destino = results[1].formatted_address;
                     $("#destinoRuta").val(OPENDATA.variables.destino);
                     infowindow.open(map, marker);
-                } 
-                else 
-                {
+                } else {
                     window.alert('No results found');
                 }
-            } 
-            else 
-            {
+            } else {
                 window.alert('Geocoder failed due to: ' + status);
             }
-        }); 
+        });
     }
 }
 
-$(document).ready(function()
-{   
+$(document).ready(function() {
     $('.button-collapse').sideNav({ menuWidth: 300, edge: 'left', closeOnClick: true, draggable: true });
-    $.ajax(
-    {
+    $.ajax({
         url: "idioma.php",
         type: "post",
         dataType: "html",
         cache: "false",
-        success: function(data)
-        {
+        success: function(data) {
             var obj = JSON.parse(data);
-            if (obj.code === undefined)
-            {
+            if (obj.code === undefined) {
                 OPENDATA.variables.idioma = obj.language;
-                $.ajax(
-                {
+                $.ajax({
                     data: { language: OPENDATA.variables.idioma },
                     url: "downloadFile.php",
                     type: "post",
                     dataType: "json",
                     cache: "false",
-                    success: function(data)
-                    {
-                        if (data.code === undefined)
-                        {
+                    success: function(data) {
+                        if (data.code === undefined) {
                             OPENDATA.metodos.viewData(data);
-                            OPENDATA.metodos.searchCard();        
-                        }
-                        else
-                        {
+                            OPENDATA.metodos.searchCard();
+                        } else {
                             $("body").html(JSON.stringify(data));
                         }
                     },
-                    beforeSend : function()
-                    {
+                    beforeSend: function() {
                         OPENDATA.metodos.showAjaxLoading(true);
                     },
-                    complete: function()
-                    {
+                    complete: function() {
                         OPENDATA.metodos.showAjaxLoading(false);
                     }
-                });    
-            }
-            else
-            {
-                $("body").html(JSON.stringify(data));        
+                });
+            } else {
+                $("body").html(JSON.stringify(data));
             }
         }
     });
