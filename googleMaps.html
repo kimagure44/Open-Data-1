@@ -22,30 +22,21 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG8CBChj4WLWo7x1saF-vB240-Z93jcA4"></script>
         <script>
-            var OPENDATA = OPENDATA || {};
-            OPENDATA.metodos =
-            {
-                initMap: function(mapa) 
-                {
-                    debugger;
-                    var idMapa = document.getElementById("mapaUbicacion");
-                    var ubicacion = {lat: 40.451359, lng: -3.489992};
-                    var map = new google.maps.Map(idMapa, 
-                    {
-                        zoom: 17,
-                        center: ubicacion,
-                        mapTypeId: 'satellite'
-                    });
-                    var marker = new google.maps.Marker(
-                    {
-                        position: ubicacion,
-                        map: map
-                    });
-                }
+            const initMap = function(mapa) {
+                const idMapa = document.getElementById("mapaUbicacion");
+                const ubicacion = {lat: 40.451359, lng: -3.489992};
+                const map = new google.maps.Map(idMapa, {
+                    zoom: 17,
+                    center: ubicacion,
+                    mapTypeId: 'satellite'
+                });
+                const marker = new google.maps.Marker({
+                    position: ubicacion,
+                    map: map
+                });
             }
-            $(document).ready(function()
-            {   
-                OPENDATA.metodos.initMap();
+            $(document).ready(function() {   
+                initMap();
             })
         </script>
     </body>
